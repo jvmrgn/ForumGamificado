@@ -1,0 +1,13 @@
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.cliqueAqui {
+  background-color: rgb(100, 100, 187);
+  width: 128px;
+  font-size: 28px;
+}
