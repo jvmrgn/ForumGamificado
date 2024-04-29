@@ -1,6 +1,5 @@
 import style from "./AppBar.module.css";
 import img from "../../assets/logo.jpeg";
-import githubLogo from "../../assets/github-mark.png";
 
 function AppBar() {
   return (
