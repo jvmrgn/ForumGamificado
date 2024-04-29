@@ -1,14 +1,16 @@
-import "the-new-css-reset/css/reset.css";
-import "./App.css";
-import AppBar from "./Components/AppBar/AppBar.jsx";
-import PostsListPage from "./Components/PostsListPage/PostsListPage.jsx";
+import React from "react";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import HomePage from "../src/Pages/Home.jsx";
+import Posts from "../src/Pages/Posts.jsx";
 
 function App() {
   return (
-    <>
-      <AppBar />
-      <PostsListPage />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/posts" element={<Posts />} />
+      </Routes>
+    </Router>
   );
 }
 
