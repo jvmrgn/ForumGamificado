@@ -25,13 +25,13 @@ const LikeDislikeButton = ({postId, likes, dislikes, onLike, onDislike}) => {
     <div className={style.likeDislikeButton}>
       <button
         onClick={handleLikeClick}
-        className={`${style.button} ${liked ? style.liked : ""}`}
+        className={`${style.button} ${style.liked}`}
       >
         Like ({likes})
       </button>
       <button
         onClick={handleDislikeClick}
-        className={`${style.button} ${disliked ? style.disliked : ""}`}
+        className={`${style.button} ${style.disliked}`}
       >
         Dislike ({dislikes})
       </button>
