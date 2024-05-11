@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {firebase} from "../../../firebaseConfig.js";
-import "firebase/compat/database"; // Importe o módulo compatível com o Realtime Database
+import "firebase/compat/database";
 import styles from "./AddPost.module.css";
 
 const AddPost = () => {
@@ -16,18 +16,16 @@ const AddPost = () => {
         return;
       }
 
-      // Criar um novo post com os dados fornecidos
       const newPost = {
         title,
         content,
-        publishedDate: new Date().toISOString(), // Use a data atual como data de publicação
-        creatorName: "Usuário1", // Supondo que o criador seja sempre o mesmo usuário
+        publishedDate: new Date().toISOString(),
+        creatorName: "Usuário1",
         keywords: ["Lorem", "ipsum", "dolor"],
-        likes: 0, // Inicialmente, não há curtidas
-        dislikes: 0, // Inicialmente, não há descurtidas
+        likes: 0,
+        dislikes: 0,
       };
 
-      // Use a referência para o Realtime Database e adicione o novo post à rota /posts
       await firebase.database().ref("posts").push(newPost);
 
       setTitle("");

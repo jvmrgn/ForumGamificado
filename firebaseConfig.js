@@ -5,7 +5,7 @@ import "firebase/compat/auth";
 const firebaseConfig = {
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_DOMÍNIO.firebaseapp.com",
-  databaseURL: "https://projetobloco-f1e10-default-rtdb.firebaseio.com/", // URL do Realtime Database
+  databaseURL: "https://projetobloco-f1e10-default-rtdb.firebaseio.com/",
   projectId: "SEU_PROJECT_ID",
   storageBucket: "SEU_STORAGE_BUCKET",
   messagingSenderId: "SEU_SENDER_ID",
