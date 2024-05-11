@@ -1,0 +1,14 @@
+{ "posts" : {
+  "id": 1,
+  "title": "Post 1",
+  "publishedDate": "2024-03-30",
+  "creatorName": "Usuário1",
+  "keywords": ["Lorem", "ipsum", "dolor"],
+  "comments": [
+    {"id": 1, "content": "Comentário 1", "user": "UsuárioA"},
+    {"id": 2, "content": "Comentário 2", "user": "UsuárioB"}
+  ],
+  "likes": 10,
+  "dislikes": 2
+}
+}
