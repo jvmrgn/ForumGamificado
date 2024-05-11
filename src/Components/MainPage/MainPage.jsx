@@ -9,7 +9,7 @@ function MainPage() {
         Espero que você se divirta utilizando nossa rede social! Para encontrar
         os posts
       </p>
-      <a className={style.cliqueAqui} href="http://localhost:5174/posts">
+      <a className={style.cliqueAqui} href="http://localhost:5173/posts">
         Clique aqui!
       </a>
     </div>
