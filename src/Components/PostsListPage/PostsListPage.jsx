@@ -1,29 +1,25 @@
 import React, {useEffect, useState} from "react";
 import PostsList from "../PostList/PostList.jsx";
-import {firebase} from "../../../firebaseConfig.js"; // Importe o Firebase
-import "firebase/compat/database"; // Importe o módulo compatível com o Realtime Database
+import {firebase} from "../../../firebaseConfig.js";
+import "firebase/compat/database";
 import style from "./PostsListPage.module.css";
 
 const PostsListPage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Função para buscar os posts do Firebase
     const fetchPosts = async () => {
       try {
-        // Referência para a coleção de posts no Realtime Database
         const postsRef = firebase.database().ref("posts");
 
-        // Captura os dados dos posts do Realtime Database
         postsRef.on("value", (snapshot) => {
-          const postsData = snapshot.val(); // Dados dos posts
+          const postsData = snapshot.val();
           if (postsData) {
-            // Converte os dados dos posts em um array de objetos
             const postsArray = Object.keys(postsData).map((key) => ({
-              id: key, // Chave única do post no Firebase
-              ...postsData[key], // Outros dados do post
+              id: key, 
+              ...postsData[key],
             }));
-            setPosts(postsArray); // Define o estado dos posts
+            setPosts(postsArray);
           } else {
             console.log("Nenhum post encontrado");
           }
@@ -33,27 +29,12 @@ const PostsListPage = () => {
       }
     };
 
-    fetchPosts(); // Chama a função para buscar os posts ao montar o componente
+    fetchPosts();
   }, []);
-
-  const handleLike = (postId) => {
-    // Lógica para incrementar o número de likes de um post no Firebase
-    // (Você precisará implementar essa lógica com as operações no Firebase)
-  };
-
-  const handleDislike = (postId) => {
-    // Lógica para incrementar o número de dislikes de um post no Firebase
-    // (Você precisará implementar essa lógica com as operações no Firebase)
-  };
 
   return (
     <div className={style.postlist}>
-      <PostsList
-        posts={posts}
-        authenticatedUser="Usuário1"
-        onLike={handleLike}
-        onDislike={handleDislike}
-      />
+      <PostsList posts={posts} authenticatedUser="Usuário1" />
     </div>
   );
 };

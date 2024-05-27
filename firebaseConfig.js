@@ -3,13 +3,14 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMÍNIO.firebaseapp.com",
-  databaseURL: "https://projetobloco-f1e10-default-rtdb.firebaseio.com/",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_STORAGE_BUCKET",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID",
+  apiKey: "AIzaSyCt3ZyjjGGzLLrb76FFGGJeQAcG4hF-MXE",
+  authDomain: "projetobloco-f1e10.firebaseapp.com",
+  databaseURL: "https://projetobloco-f1e10-default-rtdb.firebaseio.com",
+  projectId: "projetobloco-f1e10",
+  storageBucket: "projetobloco-f1e10.appspot.com",
+  messagingSenderId: "386068205498",
+  appId: "1:386068205498:web:cd0616bbc414c16cdd1783",
+  measurementId: "G-J0HQ9W41HD",
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -16,13 +16,6 @@ const PostsList = ({posts, authenticatedUser, onLike, onDislike}) => {
       {lastTenPosts.map((post) => (
         <div key={post.id}>
           <PostCard post={post} authenticatedUser={authenticatedUser} />
-          <LikeDislikeButton
-            postId={post.id}
-            likes={post.likes}
-            dislikes={post.dislikes}
-            onLike={onLike}
-            onDislike={onDislike}
-          />
         </div>
       ))}
     </div>

@@ -1,0 +1,48 @@
+.commentForm {
+  margin-top: 20px;
+}
+
+.commentForm h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.commentForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentForm textarea {
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.commentForm textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.commentForm button {
+  align-self: flex-end;
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.commentForm button:hover {
+  background-color: #0056b3;
+}
+
+.commentForm .error {
+  color: red;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}

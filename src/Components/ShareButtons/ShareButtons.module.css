@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  gap: 0px;
+  justify-content: center;
+}
+
+.shareButtons {
+  width: 200px;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
