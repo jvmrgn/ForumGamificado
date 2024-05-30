@@ -45,11 +45,15 @@ function AppBar() {
     }
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div className={styles.container}>
       <a className={styles.appNameAnchor}>
         <div>
-          <img src={img} className={styles.logo} />
+          <img src={img} className={styles.logo} alt="Logo" />
         </div>
         <div>
           <p className={styles.projectName}>PB</p>
@@ -68,15 +72,19 @@ function AppBar() {
             Postar
           </a>
         </div>
-        {user && (
-          <div className={styles.userInfo}>
-            <p className={styles.userEmail}>{user.email}</p>
-            <button className={styles.logoutButton} onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        )}
       </nav>
+      {user ? (
+        <div className={styles.userInfo}>
+          <p className={styles.userEmail}>{user.email}</p>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <button className={styles.loginButton} onClick={handleLogin}>
+          Login
+        </button>
+      )}
     </div>
   );
 }

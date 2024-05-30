@@ -1,8 +1,7 @@
 import React from "react";
 import PostCard from "../PostCard/PostCard.jsx";
-import LikeDislikeButton from "../LikeDeslike/LikeDeslike.jsx";
 
-const PostsList = ({posts, authenticatedUser, onLike, onDislike}) => {
+const PostsList = ({posts, authenticatedUser}) => {
   const sortedPosts = Array.isArray(posts)
     ? posts.sort(
         (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate)

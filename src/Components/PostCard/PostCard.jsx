@@ -33,9 +33,9 @@ const PostCard = ({post, authenticatedUser}) => {
       <h2>{title}</h2>
       <p>{truncatedDescription}</p>
       <p>Publicado em: {publishedDate}</p>
-      <p>Criador: {creatorEmail}</p>{" "}
+      <p>Criador: {creatorEmail}</p>
       <p>Palavras-chave: {keywords ? keywords.join(", ") : ""}</p>
-      <p>Quantidade de comentários: {comments ? comments.length : 0}</p>{" "}
+      <p>Quantidade de comentários: {comments ? comments.length : 0}</p>
     </div>
   );
 };
