@@ -6,6 +6,7 @@ import AddPost from "./Pages/AddPost/AddPost.jsx";
 import PostPage from "../src/Pages/PostPage/PostPage.jsx";
 import Register from "../src/Components/Register/Register.jsx";
 import Login from "../src/Components/Login/Login.jsx";
+import RankingPage from "./Pages/RankingPage/RankingPage.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/post/:id" element={<PostPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/ranking" element={<RankingPage />} />
       </Routes>
     </Router>
   );

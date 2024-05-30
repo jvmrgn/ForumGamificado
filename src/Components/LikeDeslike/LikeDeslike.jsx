@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {firebase} from "../../../firebaseConfig.js";
 import style from "./LikeDeslikeButton.module.css";
 
-const LikeDislikeButton = ({postId}) => {
+const LikeDislikeButton = ({postId, userEmail}) => {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [userReaction, setUserReaction] = useState(null);
@@ -32,15 +32,22 @@ const LikeDislikeButton = ({postId}) => {
           likes: likes - 1,
           userReaction: null,
         });
+      addPoints(-1);
     } else {
+      let likeDelta = 1;
+      let dislikeDelta = 0;
+      if (userReaction === "dislike") {
+        dislikeDelta = -1;
+      }
       firebase
         .database()
         .ref(`posts/${postId}`)
         .update({
-          likes: likes + 1,
-          dislikes: userReaction === "dislike" ? dislikes - 1 : dislikes,
+          likes: likes + likeDelta,
+          dislikes: dislikes + dislikeDelta,
           userReaction: "like",
         });
+      addPoints(likeDelta);
     }
   };
 
@@ -53,15 +60,38 @@ const LikeDislikeButton = ({postId}) => {
           dislikes: dislikes - 1,
           userReaction: null,
         });
+      addPoints(-1);
     } else {
+      let dislikeDelta = 1;
+      let likeDelta = 0;
+      if (userReaction === "like") {
+        likeDelta = -1;
+      }
       firebase
         .database()
         .ref(`posts/${postId}`)
         .update({
-          dislikes: dislikes + 1,
-          likes: userReaction === "like" ? likes - 1 : likes,
+          dislikes: dislikes + dislikeDelta,
+          likes: likes + likeDelta,
           userReaction: "dislike",
         });
+      addPoints(dislikeDelta);
+    }
+  };
+
+  const addPoints = (pointsToAdd) => {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      const userId = user.uid;
+      const userRef = firebase.database().ref(`users/${userId}`);
+      userRef.transaction((userData) => {
+        if (userData) {
+          userData.points = (userData.points || 0) + pointsToAdd;
+        }
+        return userData;
+      });
+    } else {
+      console.error("Usuário não encontrado.");
     }
   };
 

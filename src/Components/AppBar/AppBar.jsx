@@ -71,6 +71,9 @@ function AppBar() {
           <a className={styles.botaoApp} href="/addpost">
             Postar
           </a>
+          <a className={styles.botaoApp} href="/ranking">
+            Ranking
+          </a>
         </div>
       </nav>
       {user ? (

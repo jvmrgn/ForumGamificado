@@ -1,0 +1,33 @@
+.rankingContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.rankingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankingTable th,
+.rankingTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.rankingTable th {
+  background-color: #f2f2f2;
+}
+
+tr {
+  background-color: #ddd;
+}
+
+.rankingTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.rankingTable tr:hover {
+  background-color: #f2f2f2;
+}

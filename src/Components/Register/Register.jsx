@@ -9,12 +9,31 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Usando useNavigate em vez de useHistory
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const userCredential = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+
+      if (userCredential && userCredential.user) {
+        const userId = userCredential.user.uid;
+
+        const usersRef = firebase.database().ref("users");
+        usersRef.once("value", (snapshot) => {
+          if (!snapshot.exists()) {
+            usersRef.set({});
+          }
+        });
+
+        await firebase.database().ref(`users/${userId}`).set({
+          email: email,
+          points: 0,
+        });
+      }
+
       console.log("User registered successfully");
       toast.success("Você se registrou com sucesso!", {
         position: "bottom-right",

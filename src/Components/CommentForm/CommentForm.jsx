@@ -2,9 +2,25 @@ import React, {useState} from "react";
 import {firebase} from "../../../firebaseConfig.js";
 import styles from "./CommentForm.module.css";
 
-const CommentForm = ({postId}) => {
+const CommentForm = ({postId, userEmail}) => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(null);
+
+  const addPoints = (pointsToAdd) => {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      const userId = user.uid;
+      const userRef = firebase.database().ref(`users/${userId}`);
+      userRef.transaction((userData) => {
+        if (userData) {
+          userData.points = (userData.points || 0) + pointsToAdd;
+        }
+        return userData;
+      });
+    } else {
+      console.error("Usuário não encontrado.");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +33,7 @@ const CommentForm = ({postId}) => {
         });
         setComment("");
         setError(null);
+        addPoints(5);
       } else {
         setError("O comentário não pode estar vazio.");
       }
