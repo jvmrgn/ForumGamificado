@@ -16,7 +16,7 @@ const PostsListPage = () => {
           const postsData = snapshot.val();
           if (postsData) {
             const postsArray = Object.keys(postsData).map((key) => ({
-              id: key, 
+              id: key,
               ...postsData[key],
             }));
             setPosts(postsArray);

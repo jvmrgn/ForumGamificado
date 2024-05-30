@@ -12,7 +12,9 @@ const SearchPosts = ({authenticatedUser}) => {
     const postsRef = firebase.database().ref("posts");
     postsRef.on("value", (snapshot) => {
       const data = snapshot.val();
-      const postsArray = data ? Object.keys(data).map((key) => data[key]) : [];
+      const postsArray = data
+        ? Object.keys(data).map((key) => ({id: key, ...data[key]}))
+        : [];
       setPosts(postsArray);
       setFilteredPosts(postsArray);
     });
